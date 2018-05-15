@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.activitystream.model.User;
 import com.stackroute.activitystream.repository.UserRepository;
+
 /*
 * Service classes are used here to implement additional business logic/validation 
 * This class has to be annotated with @Service annotation.
@@ -15,56 +16,118 @@ import com.stackroute.activitystream.repository.UserRepository;
 * better. Additionally, tool support and additional behavior might rely on it in the 
 * future.
 * */
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	/*
-	 * Autowiring should be implemented for the UserRepository.
-	 *  Please note that we should not create any object using the new keyword.
-	 * */
+	 * Autowiring should be implemented for the UserRepository. Please note that we
+	 * should not create any object using the new keyword.
+	 */
+	@Autowired
+	UserRepository userRepository;
+	boolean flag = false;
+
 	/*
-	 * This method should be used to save a new user. Call the corresponding method of Respository interface.
+	 * This method should be used to save a new user. Call the corresponding method
+	 * of Respository interface.
 	 * 
 	 */
 	public boolean save(User user) {
-		return false;
+		try {
+			userRepository.save(user);
+			flag = true;
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
+
 	/*
-	 * This method should be used to update an existing user. Call the corresponding method of Respository interface.
+	 * This method should be used to update an existing user. Call the corresponding
+	 * method of Respository interface.
 	 * 
 	 */
 	public boolean update(User user) {
-		return false;
+		try {
+			User u = userRepository.findOne(user.getUsername());
+			if (u != null) {
+				userRepository.save(user);
+				flag = true;
+			} else {
+				flag = false;
+			}
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
+
 	/*
-	 * This method should be used to delete an existing user. Call the corresponding method of Respository interface.
+	 * This method should be used to delete an existing user. Call the corresponding
+	 * method of Respository interface.
 	 * 
 	 */
 	public boolean delete(User user) {
-		return false;
+		try {
+			User u = userRepository.findOne(user.getUsername());
+			if (u != null) {
+				userRepository.delete(user);
+				flag = true;
+			} else {
+				flag = false;
+			}
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
+
 	/*
-	 * This method should be used to list all users. Call the corresponding method of Respository interface.
+	 * This method should be used to list all users. Call the corresponding method
+	 * of Respository interface.
 	 * 
 	 */
 	public List<User> list() {
-		return null;
+		return (List<User>) userRepository.findAll();
 	}
+
 	/*
-	 * This method should be used to validate a user using password. Call the corresponding method of Respository interface.
+	 * This method should be used to validate a user using password. Call the
+	 * corresponding method of Respository interface.
 	 * 
 	 */
 	public boolean validate(String username, String password) {
-		return false;
+		try {
+			userRepository.validate(username, password);
+			flag = true;
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
+
 	/*
-	 * This method should be used to get a user by username. Call the corresponding method of Respository interface.
+	 * This method should be used to get a user by username. Call the corresponding
+	 * method of Respository interface.
 	 */
 	public User get(String username) {
-		return null;
+		return userRepository.findOne(username);
+
 	}
+
 	/*
-	 * This method is used to check whether a user with a specific username exists. Call the corresponding method of Respository interface.
+	 * This method is used to check whether a user with a specific username exists.
+	 * Call the corresponding method of Respository interface.
 	 */
 	public boolean exists(String username) {
-		return false;
+		try {
+			User u = get(username);
+			if (u != null) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
 	}
 }
