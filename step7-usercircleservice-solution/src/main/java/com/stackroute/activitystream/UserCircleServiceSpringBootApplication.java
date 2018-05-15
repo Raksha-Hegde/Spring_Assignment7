@@ -11,7 +11,7 @@ import com.stackroute.activitystream.config.JwtFilter;
  * The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration 
  * and @ComponentScan with their default attributes
  */
-
+@SpringBootApplication
 public class UserCircleServiceSpringBootApplication {
 
 	/*
