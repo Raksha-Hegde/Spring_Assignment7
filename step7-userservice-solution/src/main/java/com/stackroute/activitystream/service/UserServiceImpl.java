@@ -17,7 +17,7 @@ import com.stackroute.activitystream.repository.UserRepository;
 * better. Additionally, tool support and additional behavior might rely on it in the 
 * future.
 * */
-
+@Service
 public class UserServiceImpl implements UserService {
 
 	/*

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
  * Please note that you will have to use @Component annotation on this class if wish
  * to autowire the class from any other components of the application
  */
+@Component
 @Entity
 public class UserCircle {
 	/*

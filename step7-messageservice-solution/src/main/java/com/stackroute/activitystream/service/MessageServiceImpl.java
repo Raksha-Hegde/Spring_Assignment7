@@ -17,6 +17,8 @@ import com.stackroute.activitystream.repository.UserTagRepository;
 * better. Additionally, tool support and additional behavior might rely on it in the 
 * future.
 * */
+
+@Service
 public class MessageServiceImpl implements MessageService {
 
 	/*

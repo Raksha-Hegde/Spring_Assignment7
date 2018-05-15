@@ -17,6 +17,8 @@ import com.stackroute.activitystream.repository.UserCircleRepository;
 * better. Additionally, tool support and additional behavior might rely on it in the 
 * future.
 * */
+
+@Service
 public class UserCircleServiceImpl implements UserCircleService {
 	/*
 	 * Autowiring should be implemented for the UserCircleRepository. Please note

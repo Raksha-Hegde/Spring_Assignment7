@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 /*
  * The class "Message" will be acting as the data model for the message Table in the database. Please
  * note that this class is annotated with @Entity annotation. Hibernate will scan all package for 
@@ -16,6 +18,8 @@ import javax.persistence.Table;
  * Please note that you will have to use @Component annotation on this class if wish
  * to autowire the class from any other components of the application
  */
+@Component
+@Entity
 public class Message {
 	/*
 	 * This class should have eight fields

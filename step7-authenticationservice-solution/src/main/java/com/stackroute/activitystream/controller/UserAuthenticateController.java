@@ -32,6 +32,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * Also annotate this class with @EnableWebMvc annotation to enable Spring Web MVC.
  */
 
+@RestController
 public class UserAuthenticateController {
 
 	Map<String, String> map = new HashMap<>();
