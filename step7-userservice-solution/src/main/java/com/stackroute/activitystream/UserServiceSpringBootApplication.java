@@ -22,7 +22,10 @@ public class UserServiceSpringBootApplication {
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
 
-		return null;
+		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new JwtFilter());
+		registrationBean.addUrlPatterns("/api/user/*");
+		return registrationBean;
 	}
 
 	/*

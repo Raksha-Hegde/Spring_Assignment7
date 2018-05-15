@@ -22,7 +22,10 @@ public class CircleServiceSpringBootApplication {
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
 
-		return null;
+		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new JwtFilter());
+		registrationBean.addUrlPatterns("/api/circle/*");
+		return registrationBean;
 	}
 
 	/*
