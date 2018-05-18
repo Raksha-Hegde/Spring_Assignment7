@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.stackroute.activitystream.model.Circle;
 import com.stackroute.activitystream.repository.CircleRepository;
-import com.stackroute.activitystream.repository.UserRepository;
+
 
 /*
 * Service classes are used here to implement additional business logic/validation. 
@@ -26,9 +26,6 @@ public class CircleServiceImpl implements CircleService {
 	 */
 	@Autowired
 	CircleRepository circleRepository;
-
-	@Autowired
-	UserRepository userRepository;
 
 	/*
 	 * A circle should only be created if the circle does not already exist or the
